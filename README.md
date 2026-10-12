@@ -144,6 +144,9 @@ AI / RAG Advisor 采用非阻塞 Sidecar 方式运行，即使出现超时或调
 
 ## 3. 系统架构
 
+![Low-Altitude UAV 5G Platform Architecture](docs/images/system_architecture_v0.9.png)
+
+
 平台整体采用分层设计，将无人机仿真、无线通信计算、实时决策、AI 智能分析、运行产物以及 Web 可视化进行解耦。
 
 ```mermaid
