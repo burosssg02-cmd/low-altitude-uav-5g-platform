@@ -1,0 +1,54 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+
+# Runtime logs
+logs/
+*.log
+*.pid
+
+# Runtime experiment outputs
+outputs/runs/
+
+# Temporary / backup files
+*.bak
+*.bak_*
+*.tmp
+*~
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# =========================
+# Local AI model weights
+# =========================
+models/
+
+# =========================
+# External reference projects
+# =========================
+references/
+
+# =========================
+# Generated experiment outputs
+# =========================
+outputs/

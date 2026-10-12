@@ -1,0 +1,132 @@
+.comm-chart-panel {
+  margin-top: 18px;
+  padding: 22px;
+  border: 1px solid #e3e8ef;
+  border-radius: 16px;
+  background: white;
+  box-shadow:
+    0 8px 24px
+    rgba(31, 45, 61, 0.04);
+}
+
+.comm-chart-header {
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.comm-chart-header h2 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.comm-chart-header p {
+  margin: 6px 0 0;
+  color: #8b97a8;
+  font-size: 12px;
+}
+
+.comm-chart-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 7px;
+}
+
+.comm-chart-meta > span {
+  padding: 5px 8px;
+  border-radius: 999px;
+  background: #f4f6f9;
+  color: #77859a;
+  font-size: 10px;
+}
+
+.comm-chart-meta .incident-time-tag {
+  background: #fff1f1;
+  color: #c33d3d;
+}
+
+.comm-chart-grid {
+  display: grid;
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.comm-chart-card {
+  min-width: 0;
+  padding: 14px 12px 8px;
+  border: 1px solid #e5eaf1;
+  border-radius: 12px;
+  background: #fbfcfe;
+}
+
+.chart-title {
+  margin-bottom: 4px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chart-title strong {
+  font-size: 12px;
+}
+
+.chart-title span {
+  color: #8a96a8;
+  font-size: 10px;
+}
+
+.chart-area {
+  width: 100%;
+  height: 245px;
+}
+
+.comm-chart-footer {
+  margin-top: 13px;
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: #8a96a8;
+  font-size: 10px;
+}
+
+.incident-line-example {
+  width: 24px;
+  border-top:
+    2px dashed #ef4444;
+}
+
+.comm-chart-message {
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+  color: #98a5b6;
+  font-size: 13px;
+}
+
+.comm-chart-message.error {
+  color: #b42318;
+}
+
+@media (max-width: 1200px) {
+  .comm-chart-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .chart-area {
+    height: 220px;
+  }
+}
+
+@media (max-width: 760px) {
+  .comm-chart-header {
+    flex-direction: column;
+  }
+
+  .comm-chart-meta {
+    justify-content: flex-start;
+  }
+}

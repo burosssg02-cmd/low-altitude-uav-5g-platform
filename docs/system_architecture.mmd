@@ -1,0 +1,69 @@
+flowchart TB
+
+    subgraph L1["① 无人机仿真与控制层"]
+        GZ["Gazebo<br/>三维仿真环境"]
+        PX4["PX4 SITL<br/>飞控仿真"]
+        MAV["MAVSDK<br/>无人机控制接口"]
+
+        GZ <--> PX4
+        PX4 <--> MAV
+    end
+
+    subgraph L2["② 5G 通信感知层"]
+        POS["无人机位置 / 时间 / 航迹"]
+        CHANNEL["无线传播与覆盖模型"]
+        METRIC["通信质量计算<br/>RSRP / SINR / Path Loss<br/>Coverage Score"]
+
+        POS --> CHANNEL
+        CHANNEL --> METRIC
+    end
+
+    subgraph L3["③ 在线决策与动态重规划层"]
+        DETECT["Incident Detection<br/>通信异常检测"]
+        FAST["Fast Policy<br/>实时安全决策"]
+        PLAN["Communication-Aware Planner<br/>通信感知航迹规划"]
+        REPLAN["Runtime Replanning<br/>在线动态重规划"]
+
+        METRIC --> DETECT
+        DETECT --> FAST
+        FAST -->|"REPLAN_RECOMMENDED"| PLAN
+        PLAN --> REPLAN
+        REPLAN --> MAV
+    end
+
+    subgraph L4["④ AI 智能辅助层"]
+        RAG["RAG<br/>领域知识检索"]
+        LLM["LLM Incident Advisor<br/>异常分析 / 决策解释"]
+
+        DETECT -.-> LLM
+        FAST -.-> LLM
+        RAG -.-> LLM
+    end
+
+    subgraph L5["⑤ 数据与运行产物层"]
+        ART["Runtime Artifacts"]
+        CSV["CSV<br/>Trajectory / Communication"]
+        JSON["JSON<br/>Mission / Incident / Replan"]
+        PNG["PNG<br/>Trajectory / Evaluation"]
+
+        ART --> CSV
+        ART --> JSON
+        ART --> PNG
+    end
+
+    subgraph L6["⑥ API 与可视化层"]
+        API["FastAPI Backend"]
+        WEB["React + TypeScript<br/>Dashboard"]
+
+        API --> WEB
+    end
+
+    MAV --> POS
+
+    METRIC --> ART
+    DETECT --> ART
+    FAST --> ART
+    REPLAN --> ART
+    LLM --> ART
+
+    ART --> API
